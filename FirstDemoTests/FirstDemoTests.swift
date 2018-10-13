@@ -10,8 +10,9 @@ import XCTest
 @testable import FirstDemo
 
 class FirstDemoTests: XCTestCase {
-  let vc: ViewController
+  var vc: ViewController!
     override func setUp() {
+      super.setUp()
       vc = ViewController()
     }
 
@@ -26,8 +27,18 @@ class FirstDemoTests: XCTestCase {
   }
 
   func testMakeHeadlineReturnsStringWithEachWordStartCapital() {
-    let string = "this is A test headline"
-    let headline = vc.makeHeadline(from: string)
+    let input = "this is A test headline"
+    let expectedOutput = "This Is A Test Headline"
+
+    let headline = vc.makeHeadline(from: input)
+    XCTAssertEqual(headline, expectedOutput)
+  }
+
+  func testMakeHeadlineReturnsStringWithEachWordStartCapital2() {
+    let input = "Here is another Example"
+    let expectedOutput = "Here Is Another Example"
+    let headline = vc.makeHeadline(from: input)
+    XCTAssertEqual(headline, expectedOutput)
   }
 
 }
